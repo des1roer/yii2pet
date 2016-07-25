@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\unit\models\UnitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,8 +15,28 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="unit-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);   ?>
 
+    <script>
+        $(function () {
+            $.ajax({
+                url: '<?php echo Yii::$app->request->baseUrl . '/unit/unit/ajax' ?>',
+                type: 'post',
+                data: {
+                    id: 4,
+                    _csrf: '<?= Yii::$app->request->getCsrfToken() ?>'
+                },
+                success: function (data) {
+                    console.log(data.search);
+                }
+            });
+        });
+    </script>
+    <?php
+    $form = ActiveForm::begin([
+                'options' => ['action' => '?r=twit/send-twit']
+    ]);
+    ?>
     <p>
         <?= Html::a('Create Unit', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

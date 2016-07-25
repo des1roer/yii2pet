@@ -12,13 +12,12 @@ use yii\filters\VerbFilter;
 /**
  * UnitController implements the CRUD actions for Unit model.
  */
-class UnitController extends Controller
-{
+class UnitController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -29,18 +28,34 @@ class UnitController extends Controller
         ];
     }
 
+    public function actionAjax() {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+            
+            $customers = Unit::find()
+                    ->where(['id' => $data['id']])
+                    ->orderBy('id')
+                    ->all();
+
+              \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+              return [
+              'search' => $customers,
+              'code' => 100,
+              ]; 
+        }
+    }
+
     /**
      * Lists all Unit models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new UnitSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -49,10 +64,9 @@ class UnitController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -61,8 +75,7 @@ class UnitController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Unit();
         $model->lvl = 1;
         $model->exp = 0;
@@ -70,7 +83,7 @@ class UnitController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -81,15 +94,14 @@ class UnitController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -100,8 +112,7 @@ class UnitController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -114,12 +125,12 @@ class UnitController extends Controller
      * @return Unit the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Unit::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
