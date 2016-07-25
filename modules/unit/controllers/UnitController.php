@@ -31,17 +31,17 @@ class UnitController extends Controller {
     public function actionAjax() {
         if (Yii::$app->request->isAjax) {
             $data = Yii::$app->request->post();
-            
+
             $customers = Unit::find()
                     ->where(['id' => $data['id']])
                     ->orderBy('id')
                     ->all();
 
-              \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-              return [
-              'search' => $customers,
-              'code' => 100,
-              ]; 
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return [
+                'search' => $customers,
+                'code' => 100,
+            ];
         }
     }
 
@@ -54,6 +54,7 @@ class UnitController extends Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+                    'array' => ['1st' => 'aa', '1st4' => 'a3a', '1s2t' => 'a4a'],
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

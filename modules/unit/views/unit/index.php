@@ -27,16 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
                     _csrf: '<?= Yii::$app->request->getCsrfToken() ?>'
                 },
                 success: function (data) {
-                    console.log(data.search);
+                    //   console.log(data.search);
                 }
             });
         });
     </script>
     <?php
-    $form = ActiveForm::begin([
-                'options' => ['action' => '?r=twit/send-twit']
-    ]);
+    var_dump($array);
+    $array = json_encode($array);
     ?>
+    <script>
+        var array = JSON.parse('<?= $array ?>');
+        //console.log(array);
+        for (var k in array) {
+            if (array.hasOwnProperty(k)) {
+                // alert("Key is " + k + ", value is" + array[k]);
+                console.log(k, array[k])
+            }
+        }       
+    </script>
     <p>
         <?= Html::a('Create Unit', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
