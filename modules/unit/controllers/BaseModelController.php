@@ -3,16 +3,16 @@
 namespace app\modules\unit\controllers;
 
 use Yii;
-use app\modules\unit\models\BaseModel;
-use app\modules\unit\models\BaseModelSearch;
+use app\modules\unit\models\Basemodel;
+use app\modules\unit\models\BasemodelSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BaseModelController implements the CRUD actions for BaseModel model.
+ * BasemodelController implements the CRUD actions for Basemodel model.
  */
-class BaseModelController extends Controller
+class BasemodelController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Lists all BaseModel models.
+     * Lists all Basemodel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BaseModelSearch();
+        $searchModel = new BasemodelSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Displays a single BaseModel model.
+     * Displays a single Basemodel model.
      * @param string $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Creates a new BaseModel model.
+     * Creates a new Basemodel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BaseModel();
+        $model = new Basemodel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Updates an existing BaseModel model.
+     * Updates an existing Basemodel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -94,7 +94,7 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Deletes an existing BaseModel model.
+     * Deletes an existing Basemodel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +107,15 @@ class BaseModelController extends Controller
     }
 
     /**
-     * Finds the BaseModel model based on its primary key value.
+     * Finds the Basemodel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return BaseModel the loaded model
+     * @return Basemodel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BaseModel::findOne($id)) !== null) {
+        if (($model = Basemodel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

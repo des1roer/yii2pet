@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\unit\models\ExtModel */
+/* @var $model app\modules\unit\models\Extmodel */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="ext-model-form">
+<div class="extmodel-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -39,6 +39,11 @@ AppAsset::register($this);
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     ['label' => 'Gii', 'url' => ['/gii']],
+                    ['label' => 'Admin', 'items' => [
+                            ['label' => 'unit', 'url' => ['/unit/unit']],
+                            ['label' => 'ext', 'url' => ['/unit/extmodel']],
+                            ['label' => 'base', 'url' => ['/unit/basemodel']],
+                        ], 'visible' => $isAdmin], // check if user is an admin 
                     Yii::$app->user->isGuest ? (
                             ['label' => 'Login', 'url' => ['/site/login']]
                             ) : (
@@ -56,11 +61,11 @@ AppAsset::register($this);
             ?>
 
             <div class="container">
-<?=
-Breadcrumbs::widget([
-    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-])
-?>
+                <?=
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ])
+                ?>
                 <?= $content ?>
             </div>
         </div>

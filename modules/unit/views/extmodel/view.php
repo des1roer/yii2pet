@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\unit\models\ExtModel */
+/* @var $model app\modules\unit\models\Extmodel */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Ext Models', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Extmodels', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ext-model-view">
+<div class="extmodel-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

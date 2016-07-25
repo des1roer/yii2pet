@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\unit\models\BaseModel */
+/* @var $model app\modules\unit\models\Basemodel */
 
-$this->title = 'Create Base Model';
-$this->params['breadcrumbs'][] = ['label' => 'Base Models', 'url' => ['index']];
+$this->title = 'Create Basemodel';
+$this->params['breadcrumbs'][] = ['label' => 'Basemodels', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="base-model-create">
+<div class="basemodel-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

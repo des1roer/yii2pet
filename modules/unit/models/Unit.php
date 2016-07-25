@@ -59,14 +59,14 @@ class Unit extends \yii\db\ActiveRecord {
      * @return \yii\db\ActiveQuery
      */
     public function getBase() {
-        return $this->hasOne(BaseModel::className(), ['id' => 'base_id']);
+        return $this->hasOne(Basemodel::className(), ['id' => 'base_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getExt() {
-        return $this->hasOne(ExtModel::className(), ['id' => 'ext_id']);
+        return $this->hasOne(Extmodel::className(), ['id' => 'ext_id']);
     }
 
 }

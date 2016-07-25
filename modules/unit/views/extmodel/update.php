@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\unit\models\ExtModel */
+/* @var $model app\modules\unit\models\Extmodel */
 
-$this->title = 'Update Ext Model: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Ext Models', 'url' => ['index']];
+$this->title = 'Update Extmodel: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Extmodels', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="ext-model-update">
+<div class="extmodel-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

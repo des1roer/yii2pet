@@ -3,16 +3,16 @@
 namespace app\modules\unit\controllers;
 
 use Yii;
-use app\modules\unit\models\ExtModel;
-use app\modules\unit\models\ExtModelSearch;
+use app\modules\unit\models\Extmodel;
+use app\modules\unit\models\ExtmodelSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ExtModelController implements the CRUD actions for ExtModel model.
+ * ExtmodelController implements the CRUD actions for Extmodel model.
  */
-class ExtModelController extends Controller
+class ExtmodelController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Lists all ExtModel models.
+     * Lists all Extmodel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ExtModelSearch();
+        $searchModel = new ExtmodelSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Displays a single ExtModel model.
+     * Displays a single Extmodel model.
      * @param string $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Creates a new ExtModel model.
+     * Creates a new Extmodel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ExtModel();
+        $model = new Extmodel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Updates an existing ExtModel model.
+     * Updates an existing Extmodel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -94,7 +94,7 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Deletes an existing ExtModel model.
+     * Deletes an existing Extmodel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +107,15 @@ class ExtModelController extends Controller
     }
 
     /**
-     * Finds the ExtModel model based on its primary key value.
+     * Finds the Extmodel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return ExtModel the loaded model
+     * @return Extmodel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ExtModel::findOne($id)) !== null) {
+        if (($model = Extmodel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
